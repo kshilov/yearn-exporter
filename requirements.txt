@@ -7,3 +7,5 @@ cachetools>=4.1.1
 fastapi>=0.63.0
 uvicorn>=0.13.4
 pony>=0.7.13
+prometheus-client>=0.10.1
+google-cloud-bigquery>=2.13.1
