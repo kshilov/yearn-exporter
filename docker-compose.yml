@@ -8,6 +8,20 @@ networks:
   yearn-exporter:
 
 services:
+  yearn-exporter-v0:
+    build: .
+    command: exporter
+    ports:
+      - 8700:8700
+    environment:
+      - WEB3_INFURA_PROJECT_ID
+      - ALCHEMY_URL
+      - ETHERSCAN_TOKEN
+      - SLEEP_SECONDS
+    networks:
+      - yearn-exporter
+    restart: always
+
   yearn-exporter-v1:
     build: .
     command: exporter_v1

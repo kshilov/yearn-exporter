@@ -18,10 +18,13 @@ CACHED_CALLS = [encode_hex(fourbyte(data)) for data in CACHED_CALLS]
 
 def cache_middleware(make_request, w3):
     def middleware(method, params):
+        #TODO: fix unsupported operand type(s) for -: 'str' and 'str'
+        #Original: or method == "eth_getLogs" and params[0]["toBlock"] - params[0]["fromBlock"] == BATCH_SIZE - 1
         should_cache = (
             method == "eth_call" and params[0]["data"] in CACHED_CALLS
             or method == "eth_getCode" and params[1] == "latest"
-            or method == "eth_getLogs" and params[0]["toBlock"] - params[0]["fromBlock"] == BATCH_SIZE - 1
+            or method == "eth_getLogs"
+            or method == "eth_getFilterChanges"  #remove that
         )
         logger.debug("%s  %s %s", "🔴🟢"[should_cache], method, params)
         if should_cache:

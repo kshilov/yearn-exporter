@@ -1,4 +1,8 @@
 networks:
-    default: mainnet
+    default: mainnet-alchemy
+    mainnet-alchemy:
+        explorer: ${EXPLORER}
+        host: ${ALCHEMY_URL}
+        chain_id: 1
 
 autofetch_sources: true

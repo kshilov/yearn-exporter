@@ -10,3 +10,7 @@ cache
 *.ipynb
 node_modules/
 static/
+.env
+.useful
+_credentials/
+.idea/
